@@ -54,7 +54,7 @@ INSTALL_DIR     ?= $(INSTALL) -d -m 755
 # ============================================================
 # Combined CFLAGS
 # ============================================================
-ALL_CFLAGS = $(CFLAGS) $(INCLUDE_FLAGS) $(FLINT_FLAGS) $(PML_FLAGS)
+ALL_CFLAGS = $(CFLAGS) $(INCLUDE_FLAGS) $(FLINT_FLAGS) $(PML_FLAGS) $(COMPAT_INCLUDE)
 
 # ============================================================
 # External library sets
