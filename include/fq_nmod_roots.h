@@ -19,6 +19,19 @@
 #define PRIME 9223372036854775783ULL
 #define SMALL_PRIME 1073741827ULL
 
+#if __FLINT_VERSION < 3 || (__FLINT_VERSION == 3 && __FLINT_VERSION_MINOR < 1)
+  static inline ulong fq_nmod_ctx_prime_ui(const fq_nmod_ctx_t ctx) {
+      return fmpz_get_ui(fq_nmod_ctx_prime(ctx));
+  }
+  #define fq_nmod_ctx_prime fq_nmod_ctx_prime_ui
+#endif
+
+#if __FLINT_VERSION < 3 || (__FLINT_VERSION == 3 && __FLINT_VERSION_MINOR < 2)
+  #define flint_rand_init     flint_randinit
+  #define flint_rand_set_seed flint_randseed
+  #define flint_rand_clear    flint_randclear
+#endif
+
 // Root storage structure for nmod_poly version
 typedef struct {
     mp_limb_t *roots;
