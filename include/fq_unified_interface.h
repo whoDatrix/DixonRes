@@ -16,6 +16,16 @@
 extern "C" {
 #endif
 
+#if __FLINT_VERSION < 3 || (__FLINT_VERSION == 3 && __FLINT_VERSION_MINOR < 1)
+  #define fq_nmod_ctx_prime(ctx) fmpz_get_ui(fq_nmod_ctx_prime(ctx))
+#endif
+
+#if __FLINT_VERSION < 3 || (__FLINT_VERSION == 3 && __FLINT_VERSION_MINOR < 2)
+  #define flint_rand_init     flint_randinit
+  #define flint_rand_set_seed flint_randseed
+  #define flint_rand_clear    flint_randclear
+#endif
+
 /* ============================================================================
    UNIFIED FIELD ELEMENT TYPE WITH ZECH SUPPORT
    ============================================================================ */
