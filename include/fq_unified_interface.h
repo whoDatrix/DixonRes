@@ -17,10 +17,7 @@ extern "C" {
 #endif
 
 #if __FLINT_VERSION < 3 || (__FLINT_VERSION == 3 && __FLINT_VERSION_MINOR < 1)
-  static inline ulong fq_nmod_ctx_prime_ui(const fq_nmod_ctx_t ctx) {
-      return fmpz_get_ui(fq_nmod_ctx_prime(ctx));
-  }
-  #define fq_nmod_ctx_prime fq_nmod_ctx_prime_ui
+  #define fq_nmod_ctx_prime(ctx) fmpz_get_ui(fq_nmod_ctx_prime(ctx))
 #endif
 
 #if __FLINT_VERSION < 3 || (__FLINT_VERSION == 3 && __FLINT_VERSION_MINOR < 2)
